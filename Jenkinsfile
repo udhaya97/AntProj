@@ -45,8 +45,9 @@ pipeline {
    }
       stage ('Start Tomcat Server') {
          steps{
-         withEnv( ["CATALINA_HOME=${cata}"] )
+            withEnv( ["CATALINA_HOME=${cata}"] ){
          bat "${tomcatBin}\\startup.bat"
+            
         
          }
    }
