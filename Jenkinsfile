@@ -2,7 +2,7 @@ def antVersion = 'Ant_1.10.7'
 def tomcatWeb = 'G:\\Downloads\\apache-tomcat-9.0.33\\webapps'
    def tomcatBin = 'G:\\Downloads\\apache-tomcat-9.0.33\\bin'
 def cata = 'G:\\Downloads\\apache-tomcat-9.0.33'
-def jhome='C:\Program Files\Java\jdk1.8.0_144'
+def jhome='C:\\Program Files\\Java\\jdk1.8.0_144'
    def tomcatStatus = ''
 pipeline {
     agent any 
