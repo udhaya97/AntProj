@@ -1,0 +1,232 @@
+<project xmlns:ivy="antlib:org.apache.ivy.ant" xmlns:sonar="antlib:org.sonar.ant" name="EmployeeCrudAnt" default="main" basedir=".">
+
+
+	<!-- Project Structure -->
+	<property name="jdk.version" value="1.8" />
+	<property name="projectName" value="WebProject" />
+	<property name="src.dir" location="src" />
+	<property name="resources.dir" location="resources" />
+	<property name="web.dir" value="war" />
+	<property name="web.classes.dir" location="${web.dir}/classes" />
+	<property name="target.dir" location="target" />
+	<property name="target.temp.dir" location="target/temp" />
+	<property name="lib.dir" value="WebContent/WEB-INF/lib" />
+	<property name="src.test" value="src/tests"/>
+	<property name="test.classes" value="${web.classes.dir}/testclass"/>
+	
+	
+	<property name="report.dir" location="report" />
+	
+	<path id="classpath.tests">
+	 <pathelement location="WebContent/WEB-INF/lib/spring-beans-5.1.1.RELEASE.jar" />
+	<pathelement location="WebContent/WEB-INF/lib/hamcrest-core-1.3.jar" />
+	<pathelement location="WebContent/WEB-INF/lib/junit-4.13.jar" />
+	<pathelement location="WebContent/WEB-INF/lib/spring-test-5.1.1.RELEASE.jar" />
+	<pathelement location="WebContent/WEB-INF/lib/spring-tx-5.1.1.RELEASE.jar" />
+	<pathelement location="WebContent/WEB-INF/lib/spring-aop-5.1.1.RELEASE.jar" />
+	<pathelement location="WebContent/WEB-INF/lib/slf4j-api-1.7.6.jar" />
+	<pathelement location="WebContent/WEB-INF/lib/spring-context-5.1.1.RELEASE.jar" />
+	<pathelement location="WebContent/WEB-INF/lib/commons-logging-1.2.jar"/>
+	<pathelement location="WebContent/WEB-INF/lib/javax.servlet-api-4.0.1.jar"/>
+	<pathelement location="WebContent/WEB-INF/lib/mybatis-3.5.0.jar" />
+	<pathelement location="WebContent/WEB-INF/lib/mybatis-spring-2.0.2.jar" />
+	<pathelement location="WebContent/WEB-INF/lib/spring-expression-5.1.1.RELEASE.jar" />
+	<pathelement location="WebContent/WEB-INF/lib/spring-core-5.1.1.RELEASE.jar" />
+	<pathelement location="WebContent/WEB-INF/lib/slf4j-api-1.7.6.jar" />
+	<pathelement location="WebContent/WEB-INF/lib/logback-classic-1.1.2.jar" />
+			<pathelement location="WebContent/WEB-INF/lib/logback-core-1.1.2.jar" />
+	<pathelement location="WebContent/WEB-INF/lib/ojdbc8-19.3.0.0.jar" />
+		
+		<pathelement location="WebContent/WEB-INF/lib/spring-jdbc-5.1.1.RELEASE.jar"/>
+	    <pathelement location="${web.classes.dir}"/>
+	  </path>
+	
+	<path id="alljar.classpath">
+		<pathelement location="WebContent/WEB-INF/lib/c3p0-0.9.1.2.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/hamcrest-core-1.3.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/jackson-core-2.11.0-javadoc.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/jstl-1.2.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/junit-4.13.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/logback-classic-1.1.2.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/logback-core-1.1.2.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/mybatis-3.5.0.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/mybatis-spring-2.0.2.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/ojdbc8-19.3.0.0.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/servlet-api-3.0-alpha-1.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/slf4j-api-1.7.6.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/joda-convert-2.2.1.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/sonarqube-ant-task-2.7.0.1612.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/spring-aop-5.1.1.RELEASE.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/spring-beans-5.1.1.RELEASE.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/spring-context-5.1.1.RELEASE.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/spring-core-5.1.1.RELEASE.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/spring-expression-5.1.1.RELEASE.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/spring-jcl-5.1.1.RELEASE.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/spring-test-5.1.1.RELEASE.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/spring-tx-5.1.1.RELEASE.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/spring-web-5.1.1.RELEASE.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/spring-webmvc-5.1.1.RELEASE.jar" />
+		<pathelement location="WebContent/WEB-INF/lib/tomcat-jasper-9.0.33.jar" />
+	<pathelement location="WebContent/WEB-INF/lib/javax.servlet-api-4.0.1.jar"/>
+		<pathelement location="WebContent/WEB-INF/lib/commons-logging-1.2.jar"/>
+	</path>
+	
+
+	<!-- Define the SonarQube global properties (the most usual way is to pass these properties via the command line) -->
+	<property name="sonar.host.url" value="http://localhost:9000" />
+
+
+
+
+
+	<!-- Define the SonarQube project properties -->
+	<property name="sonar.projectKey" value="org.sonarqube:sonarqube-scanner-ant" />
+	<property name="sonar.projectName" value="EmployeeCrudAntProj" />
+	<property name="sonar.projectVersion" value="1.0" />
+	<property name="sonar.sources" value="src" />
+   
+	<property name="sonar.java.binaries" value="${web.dir}/classes" />
+	<property name="sonar.java.libraries" value="${lib.dir}/*.jar" />
+
+
+
+	<!-- Define SonarScanner for Ant Target -->
+	<target name="sonar">
+		<taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
+			<!-- Update the following line, or put the "sonarqube-ant-task-*.jar" file in your "$HOME/.ant/lib" folder -->
+			<classpath path="G:/Ant_related/apache-ant-1.10.7/libsonarqube-ant-task-*.jar" />
+		</taskdef>
+
+		<!-- Execute SonarScanner for Ant Analysis -->
+		<sonar:sonar />
+	</target>
+
+	<!-- ivy start -->
+	<target name="resolve" description="retrieve dependencies with ivy">
+		<echo message="Getting dependencies..." />
+		<ivy:retrieve />
+
+		<ivy:cachepath pathid="compile.path" conf="compile" />
+		<ivy:cachepath pathid="runtime.path" conf="runtime" />
+		<ivy:cachepath pathid="test.path" conf="test" />
+
+	</target>
+
+	<!-- install ivy if you don't have ivyide-->
+	<target name="ivy" description="Install ivy">
+		<mkdir dir="${user.home}/.ant/lib" />
+		<get dest="${user.home}/.ant/lib/ivy.jar" src="http://search.maven.org/remotecontent?filepath=org/apache/ivy/ivy/2.4.0-rc1/ivy-2.4.0-rc1.jar" />
+	</target>
+	<!-- ivy end -->
+
+	<!-- Compile Java source from ${src.dir} and output it to ${web.classes.dir} -->
+	<target name="compile" depends="init, resolve,copy-jars" description="compile source code">
+		<mkdir dir="${web.classes.dir}" />
+		<copy todir="${web.classes.dir}" >
+					            <fileset dir="${src.dir}">
+					                <include name="**/*.xml" />
+					            </fileset>
+					        </copy>   
+		<javac destdir="${web.classes.dir}" srcdir="${src.dir}"   source="${jdk.version}" target="${jdk.version}" debug="true" includeantruntime="false" >
+			
+			
+
+			<classpath refid="alljar.classpath" />
+			
+			
+
+		</javac>
+		</target>
+	<target name="compile-test" depends="compile" description="compile test code">
+			<mkdir dir="${test.classes}" />
+			<javac destdir="${test.classes}" srcdir="${src.test}"   source="${jdk.version}" target="${jdk.version}" debug="true" includeantruntime="false"  >
+				
+				
+
+				<classpath refid="classpath.tests" />
+		
+				
+				
+				
+
+			</javac>
+			</target>
+		
+
+	<!-- Copy *.xml or *.properties from ${resources.dir} to ${web.classes.dir} -->
+	<target name="copy-resources" description="copy Java resources like xml and properties files">
+		<copy todir="${web.classes.dir}">
+			<fileset dir="${resources.dir}">
+				<include name="**/*.xml" />
+				<include name="**/*.properties" />
+			</fileset>
+		</copy>
+	</target>
+
+	<!-- Create the final WAR file for deployment -->
+	<target name="package" depends="clean,junit,compile,copy-resources" description="create a war file">
+		<!-- ivy get dependencies and put it in ${lib.dir} -->
+		<ivy:retrieve pattern="${lib.dir}/[artifact]-[revision].[ext]" conf="runtime" />
+
+		<war destfile="${target.dir}/EmployeeCrudAnt.war" webxml="WebContent/WEB-INF/web.xml">
+
+			<webinf dir="WebContent/WEB-INF" />
+			<lib dir="${lib.dir}" />
+			
+		</war>
+	</target>
+	
+	
+	<target name="copy-jars" depends="init" description="copying jars">
+	
+	 <copy todir="WebContent/WEB-INF/lib">
+					<fileset dir="lib">
+						<include name="**/*.jar" />
+						
+					</fileset>
+				</copy>
+		<delete dir="lib" />
+	
+	</target>
+
+	<!-- Run jUnit -->
+	<target name="junit" depends="compile-test">
+
+		 <junit printsummary="on" haltonfailure="yes" fork="true">
+		        <classpath>
+		          <path refid="classpath.tests"/>
+		          <pathelement location="${test.classes}"/>
+		        </classpath>
+		<formatter type="brief" usefile="false"/>
+		        <batchtest>
+		            <fileset dir="${src.test}">
+		            
+		            <include name="**/*Test.java"/>
+		            	<include name="**/*.xml"/>
+		            
+		            </fileset> 
+		        </batchtest>
+		    </junit>
+	</target>
+
+
+	<!-- Create folders -->
+	<target name="init">
+		<mkdir dir="${target.dir}" />
+		<mkdir dir="${resources.dir}" />
+		<mkdir dir="${report.dir}" />
+		<mkdir dir="${src.test}"/>
+
+
+	</target>
+
+	<!-- Delete folders -->
+	<target name="clean" description="clean up">
+		<delete dir="${web.classes.dir}" />
+		<delete dir="${target.dir}" />
+		
+	</target>
+
+	<target name="main" depends="package,sonar" />
+
+</project>
