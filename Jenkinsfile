@@ -2,7 +2,7 @@ def antVersion = 'Ant_1.10.7'
 def tomcatWeb = 'G:\\Downloads\\apache-tomcat-9.0.33\\webapps'
    def tomcatBin = 'G:\\Downloads\\apache-tomcat-9.0.33\\bin'
 def cata = 'G:\\Downloads\\apache-tomcat-9.0.33'
-def jhome='C:\\Program Files\\Java\\jdk1.8.0_144'
+def jhome='JAVA_HOME'
    def tomcatStatus = ''
 pipeline {
     agent any 
@@ -47,9 +47,11 @@ pipeline {
    }
       stage ('Start Tomcat Server') {
          steps{
+            withEnv(["JAVA_HOME=${jhome}"]){
             withEnv( ["CATALINA_HOME=${cata}"] ){
          bat "${tomcatBin}\\startup.bat"
             
+            }
             }
          }
    }
