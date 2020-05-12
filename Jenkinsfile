@@ -48,7 +48,7 @@ pipeline {
             withEnv( ["CATALINA_HOME=${cata}"] ){
          bat "${tomcatBin}\\startup.bat"
             
-        
+            }
          }
    }
     }
