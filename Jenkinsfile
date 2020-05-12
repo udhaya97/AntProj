@@ -6,10 +6,7 @@ def jhome='C:\\Program Files\\Java\\jdk1.8.0_144'
    def tomcatStatus = ''
 pipeline {
     agent any 
-   environment(["JAVA_HOME=${jhome}"])
-   {
-      echo 'Java Home'
-   }
+  
     stages {
         stage('Build') {
             steps { withEnv( ["ANT_HOME=${tool antVersion}"] ) {
