@@ -3,7 +3,7 @@ def tomcatWeb = 'G:\\Downloads\\apache-tomcat-9.0.33\\webapps'
    def tomcatBin = 'G:\\Downloads\\apache-tomcat-9.0.33\\bin'
 def cata = 'G:\\Downloads\\apache-tomcat-9.0.33'
 def jhome='JAVA_HOME'
-def jr='C:\java'
+def jr='C:\\java'
    def tomcatStatus = ''
 pipeline {
     agent any 
