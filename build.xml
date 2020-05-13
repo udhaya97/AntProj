@@ -84,7 +84,7 @@
 	<property name="sonar.projectName" value="EmployeeCrudAntProj" />
 	<property name="sonar.projectVersion" value="1.0" />
 	<property name="sonar.sources" value="src" />
-   
+  	 <property name="sonar.tests" value="src/tests" />
 	<property name="sonar.java.binaries" value="${web.dir}/classes" />
 	<property name="sonar.java.libraries" value="${lib.dir}/*.jar" />
 
