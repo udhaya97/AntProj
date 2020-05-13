@@ -80,14 +80,32 @@
 
 
 	<!-- Define the SonarQube project properties -->
-	
-<property name="sonar.projectKey" value="org.sonarqube:sonarqube-scanner-ant" />
+	<property name="sonar.projectKey" value="org.sonarqube:sonarqube-scanner-ant" />
 	<property name="sonar.projectName" value="EmployeeCrudAntProj" />
 	<property name="sonar.projectVersion" value="1.0" />
-	<property name="sonar.sources" value="src" />
-   
-	<property name="sonar.java.binaries" value="${web.dir}/classes" />
-	<property name="sonar.java.libraries" value="${lib.dir}/*.jar" />	
+	<property name="sonar.java.libraries" value="${lib.dir}/*.jar" />
+	<property name="sonar.java.test.libraries" value="${lib.dir}/junit-4.13.jar" />
+	
+	
+
+	<property name="sonar.modules" value="source-module, testing-module"/>
+
+
+	
+
+
+	<property name="testing-module.sonar.projectName" value="testing the code"/>
+	<property name="testing-module.sonar.sources" value="${src.test}"/>
+	 <property name="testing-module.sonar.test.inclusions" value="**/*Test.java" />
+	<property name="testing-module.sonar.test.binaries" value="${test.classes}"/>
+	<property name="testing-module.sonar.projectBaseDir" value ="."/>
+    
+	
+        <property name="source-module.sonar.projectName" value="source codes"/>
+	 <property name="source-module.sonar.sources" value="src"/>
+	 <property name="source-module.sonar.java.binaries" value="${web.dir}/classes"/>
+	 <property name="source-module.sonar.projectBaseDir" value ="."/>
+	
 
 
 
