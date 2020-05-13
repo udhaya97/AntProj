@@ -90,7 +90,7 @@
  	 <property name="sonar.test.inclusions" value="**/*Test.java" />
 	<property name="sonar.java.binaries" value="${web.dir}/classes" />
 	<property name="sonar.java.libraries" value="${lib.dir}/*.jar" />
-	<property name="sonar.java.test.libraries" value="${lib.dir}/junit-4.12.jar" />
+	<property name="sonar.java.test.libraries" value="${lib.dir}/junit-4.13.jar" />
 
 
 
