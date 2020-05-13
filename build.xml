@@ -85,6 +85,7 @@
 	<property name="sonar.projectVersion" value="1.0" />
 	<property name="sonar.sources" value="src" />
 	 <property name="sonar.exclusions" value="**/*Test.java" />
+	<property name="sonar.inclusions" value="**/*.xml" />
  	 <property name="sonar.tests" value="${src.test}" />
  	 <property name="sonar.test.inclusions" value="**/*Test.java" />
 	<property name="sonar.java.binaries" value="${web.dir}/classes" />
