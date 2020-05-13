@@ -204,7 +204,7 @@
 		            
 		            <include name="**/*Test.java"/>
 		            	<include name="**/*.xml"/>
-				    <exclude name="**/*.java"/>
+				   
 		            
 		            </fileset> 
 		        </batchtest>
