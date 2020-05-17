@@ -25,7 +25,7 @@ public class EmployeeController {
 
 	@RequestMapping("/")
 	public ModelAndView hel() {
-		return new ModelAndView("index");
+		return new ModelAndView("index")
 	}
 
 	
