@@ -19,7 +19,7 @@ public class EmployeeController {
 
 	@Autowired
 
-	EmployeeService empServ;
+	EmployeeService empServ
 
 	
 
